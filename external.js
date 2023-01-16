@@ -46,33 +46,25 @@ function playRound(playerSelection, computerSelection) {
             // add to computer score
             computerScore = ++computerScore;
             console.log(`${computerSelection} beats ${playerSelection} - Computer wins -> Player ${playerScore} - Computer ${computerScore}`);
-            // return(`Player ${playerScore} - Computer ${computerScore}`);
-                }
-            
-            
-
-            
-
-
-            // else if (playerSelection == "Paper" && computerSelection == "Scissors")
             
             }
+}
+//global game call
 function game() {
-
-    //reset scores when recalled()
 
     //loop for 5 games
     for (let i = 0; i < 5; i++ ) {
         playRound();
     }
-
+    //play again ask
     let choice = prompt("play again?");
         if (choice == "yes") {
+            //reset scores when recalled()
             playerScore = 0;
             computerScore = 0;
             game(); }
         else {
-        console.log("no");
+            console.log("no");
     }
 }
 

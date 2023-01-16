@@ -6,6 +6,7 @@ let computerScore = 0;
 
             //create the if statements for the game 
 function playRound(playerSelection, computerSelection) {
+        
         // create function for random choice of move
         function getComputerChoice() {
             computerSelection = possibleSelections[Math.floor(Math.random() * possibleSelections.length)];
@@ -24,7 +25,7 @@ function playRound(playerSelection, computerSelection) {
 
             //tie
             if (playerSelection == computerSelection) {
-            return(`This is a tie ${playerSelection} was chosen by both sides`) }
+            console.log(`This is a tie ${playerSelection} was chosen by both sides`) }
             //player win
             else if (
                 (playerSelection == 'rock' && computerSelection == 'scissors') || 
@@ -33,8 +34,8 @@ function playRound(playerSelection, computerSelection) {
                 {
             // add to player score       
             playerScore = ++playerScore;
-            return(`${playerSelection} beats ${computerSelection} - Player wins -> Player ${playerScore} - Computer ${computerScore}`) 
-            
+            console.log(`${playerSelection} beats ${computerSelection} - Player wins -> Player ${playerScore} - Computer ${computerScore}`) 
+                    
                 }
             //computer win
             else if (
@@ -44,7 +45,7 @@ function playRound(playerSelection, computerSelection) {
                 {
             // add to computer score
             computerScore = ++computerScore;
-            return(`${computerSelection} beats ${playerSelection} - Computer wins -> Player ${playerScore} - Computer ${computerScore}`);
+            console.log(`${computerSelection} beats ${playerSelection} - Computer wins -> Player ${playerScore} - Computer ${computerScore}`);
             // return(`Player ${playerScore} - Computer ${computerScore}`);
                 }
             
@@ -57,15 +58,21 @@ function playRound(playerSelection, computerSelection) {
             
             }
 function game() {
+
+    //reset scores when recalled()
+
     //loop for 5 games
     for (let i = 0; i < 5; i++ ) {
         playRound();
     }
 
-    let playerScore = 0;
-    let computerScore = 0;
     let choice = prompt("play again?");
-        (choice == "yes") ? game() :
-        console.log("no")
+        if (choice == "yes") {
+            playerScore = 0;
+            computerScore = 0;
+            game(); }
+        else {
+        console.log("no");
+    }
 }
-    
+
